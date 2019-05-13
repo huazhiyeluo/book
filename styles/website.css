@@ -2,3 +2,13 @@
 	word-break:break-all !important; /* 支持IE和chrome，FF不支持*/
 	word-wrap:break-word !important; /* 以上三个浏览器均支持 */
 }
+
+.book .book-summary .book-logo {
+    text-align: center;
+    width: 300px;
+}
+
+.book .book-summary .book-logo img{
+    height: 80px !important;
+    width: 100px !important;
+}
