@@ -25,10 +25,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -486,7 +482,156 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>&#x7A7A;&#x7740;&#xFF0C;&#x5F85;&#x5199;&#x2026;&#x2026;</p>
+                                <h4 id="1-&#x5B89;&#x88C5;mysql&#x57FA;&#x7840;&#x64CD;&#x4F5C;">1. &#x5B89;&#x88C5;mysql&#x57FA;&#x7840;&#x64CD;&#x4F5C;</h4>
+<h5 id="1&#x6570;&#x636E;&#x5E93;&#x57FA;&#x7840;&#x64CD;&#x4F5C;">1.&#x6570;&#x636E;&#x5E93;&#x57FA;&#x7840;&#x64CD;&#x4F5C;</h5>
+<pre><code>mysql -u&#x7528;&#x6237;&#x540D; -p&#x5BC6;&#x7801; [--tee=d:\mysql.log]    &#x767B;&#x5F55;mysql&#x5BA2;&#x6237;&#x7AEF;    
+show databases;            &#x67E5;&#x770B;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x5E93;    
+use database;            &#x5207;&#x6362;&#x5230;&#x67D0;&#x6570;&#x636E;&#x5E93;    
+show tables;            &#x67E5;&#x770B;&#x67D0;&#x6570;&#x636E;&#x5E93;&#x4E0B;&#x9762;&#x7684;&#x6240;&#x6709;&#x8868;    
+\s &#x6216; status                &#x67E5;&#x770B;&#x6570;&#x636E;&#x5E93;&#x7684;&#x72B6;&#x6001;    
+</code></pre><h5 id="2&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;">2.&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h5>
+<pre><code>show databases;                    &#x67E5;&#x770B;&#x6570;&#x636E;&#x5E93;    
+create database &#x6570;&#x636E;&#x5E93;&#x540D;;        &#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;        
+drop database &#x6570;&#x636E;&#x5E93;&#x540D;;            &#x5220;&#x9664;&#x6570;&#x636E;&#x5E93;    
+show create database &#x6570;&#x636E;&#x5E93;&#x540D;    &#x67E5;&#x770B;&#x6570;&#x636E;&#x5E93;&#x521B;&#x5EFA;&#x60C5;&#x51B5;    
+show create table &#x8868;&#x540D;            &#x67E5;&#x770B;&#x8868;&#x7684;&#x521B;&#x5EFA;&#x60C5;&#x51B5;    
+&#x4F8B;&#xFF1A;create database test default character set utf8;    
+create database jdbc default charset=utf8;    
+create database if not exists test default charset utf8 collate utf8_general_ci;    
+</code></pre><h5 id="3&#x6570;&#x636E;&#x8868;&#x64CD;&#x4F5C;">3.&#x6570;&#x636E;&#x8868;&#x64CD;&#x4F5C;</h5>
+<pre><code>show tables&#xFF1B;            &#x67E5;&#x770B;&#x6570;&#x636E;&#x8868;    
+create table &#x8868;&#x540D;(    
+int  &#x5C5E;&#x6027;,    
+name &#x5C5E;&#x6027;,    
+age &#x5C5E;&#x6027;    
+)                                        &#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;    
+drop table &#x8868;&#x540D;                            &#x5220;&#x9664;&#x6570;&#x636E;&#x8868;    
+rename table old&#x8868;&#x540D; to new&#x8868;&#x540D;            &#x4FEE;&#x6539;&#x6570;&#x636E;&#x8868;&#x8868;&#x540D;    
+desc &#x8868;&#x540D;                                &#x67E5;&#x770B;&#x8868;&#x7ED3;&#x6784;    
+forexample:    
+CREATE TABLE IF NOT EXISTS `member` (    
+    `id` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x7F16;&#x53F7;&apos;,    
+    `user` varchar(20) NOT NULL,    
+    `passwd` char(40) NOT NULL,    
+PRIMARY KEY (`id`)    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;    
+</code></pre><h5 id="4&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;">4.&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;</h5>
+<pre><code>a)&#x5B57;&#x6BB5;&#x7C7B;&#x578B;    
+    &#x6570;&#x503C;&#xFF1A;int,float    
+    &#x5B57;&#x7B26;&#xFF1A;varchar,char,text,logntext    
+    &#x65E5;&#x671F;&#xFF1A;date,datetime,time    
+b)&#x5B57;&#x6BB5;&#x5C5E;&#x6027;
+    unsigned    
+    zerofill    
+    auto_increment    
+    null    
+    not null    
+    default    
+
+    alter table &#x8868;&#x540D; default character set &#x5B57;&#x7B26;&#x96C6;            //&#x4FEE;&#x6539;&#x8868;&#x7684;&#x9ED8;&#x8BA4;&#x5B57;&#x7B26;&#x96C6;    
+    alter table &#x8868;&#x540D; CONVERT TO CHARACTER SET charset_name;    //&#x4FEE;&#x6539;&#x8868;&#x7684;&#x5B57;&#x7B26;&#x96C6;&#x5305;&#x62EC;&#x5217;    
+</code></pre><h5 id="5&#x5B57;&#x7B26;&#x96C6;&#x8BBE;&#x7F6E;">5.&#x5B57;&#x7B26;&#x96C6;&#x8BBE;&#x7F6E;</h5>
+<pre><code>my.ini    
+[mysqld]&#x670D;&#x52A1;&#x5668;    
+character-set-server = utf8                        //&#x670D;&#x52A1;&#x5668;&#x3001;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;&#x5B57;&#x7B26;&#x96C6;    
+collation-server = utf8_general_ci                //&#x670D;&#x52A1;&#x5668;&#x3001;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;&#x6821;&#x9A8C;&#x5B57;&#x7B26;&#x96C6;    
+[mysql]&#x5BA2;&#x6237;&#x7AEF;    
+default-character-set=utf8                        //&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x8FDE;&#x63A5;&#x5B57;&#x7B26;&#x96C6;    
+</code></pre><h5 id="6&#x8868;&#x5B57;&#x6BB5;&#x7D22;&#x5F15;">6.&#x8868;&#x5B57;&#x6BB5;&#x7D22;&#x5F15;</h5>
+<pre><code>desc select * from &#x8868;&#x540D; where field = &apos;&apos;\G;    
+&#x521B;&#x5EFA;&#x5E26;&#x7D22;&#x5F15;&#x7684;&#x8868;&#xFF1A;    
+create table t1(    
+    id int unsigned not null auto_increment,    
+    name varchar(20),    
+    primary key (id),    
+    index in_name(name) || key(name)    
+)engine=InnoDB default character set utf8;    
+
+show index from table_name;    //&#x67E5;&#x770B;&#x7D22;&#x5F15;&#x60C5;&#x51B5;    
+&#xFF1F;[&#x53C2;&#x6570;]    //&#x67E5;&#x770B;&#x67D0;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;    
+
+&#x666E;&#x901A;&#x7D22;&#x5F15;&#xFF1A;1.&#x6DFB;&#x52A0;     
+                alter table &#x8868;&#x540D; add index in_name(field);    
+                alter table &#x8868;&#x540D; add key(field);    
+        2.&#x5220;&#x9664;     
+                alter table &#x8868;&#x540D; drop index in_name;    
+                a;ter table &#x8868;&#x540D; drop key(field)    
+</code></pre><h5 id="7&#x8868;&#x5B57;&#x6BB5;&#x7EF4;&#x62A4;">7.&#x8868;&#x5B57;&#x6BB5;&#x7EF4;&#x62A4;</h5>
+<pre><code>1.&#x6DFB;&#x52A0;&#x5B57;&#x6BB5;    
+alter table &#x8868;&#x540D; add field &#x5C5E;&#x6027; after field;    
+
+2.&#x4FEE;&#x6539;&#x5B57;&#x6BB5;    
+alter table &#x8868;&#x540D; modify field &#x5C5E;&#x6027;            
+
+3.&#x5220;&#x9664;&#x5B57;&#x6BB5;    
+alter table &#x8868;&#x540D; drop field    
+
+4.&#x4FEE;&#x6539;&#x5B57;&#x6BB5;&#x540D;    
+alter table &#x8868;&#x540D; change oldfield newfield &#x5C5E;&#x6027;    
+</code></pre><h5 id="8mysql&#x64CD;&#x4F5C;&#x8BED;&#x53E5;">8.mysql&#x64CD;&#x4F5C;&#x8BED;&#x53E5;</h5>
+<pre><code>1.concat()    
+for: select id,name,concat(id,&apos;--&apos;,name) as newfield from table_name;    
+
+2.rand()    
+for: select id,name,rand()*2 as newfield from table_name;    
+
+3.sum()    
+
+4.avg()    
+
+5.max()    
+
+6.min()    
+
+7.distinct &#x53BB;&#x91CD;&#x590D;    
+select distinct * from table_name;     
+
+7.&#x5206;&#x7EC4;&#x805A;&#x5408;    
+for: 
+    a)select name,count(id) as newfield from table_name group by name order by newfield asc;    
+    b)select name,count(id) as newfield from table_name group by name having newfield&gt;5 order by newfield asc;    
+
+8.&#x591A;&#x8868;&#x67E5;&#x8BE2;    
+    a)&#x666E;&#x901A;&#x591A;&#x8868;&#x67E5;&#x8BE2;    
+        for: select name,count(name) as num  from user as u,post as p where u.id=p.u_id group by u.name;    
+    b)&#x5D4C;&#x5957;&#x67E5;&#x8BE2;-&#x591A;&#x8868;    
+        for:select name from user where id in (select distinct u_id from post);    
+    c)&#x5DE6;&#x8FDE;&#x63A5;&#x67E5;&#x8BE2;-&#x591A;&#x8868;    
+        for:select a.name,b.title from user as a left join post as b on a.id=b.u_id;    
+
+
+drop table if exists p_user;    
+create table p_user(    
+    id bigint(20) unsigned not null auto_increment primary key comment &apos;&#x7F16;&#x53F7;&apos;,    
+    u_name varchar(20) null comment &apos;&#x59D3;&#x540D;&apos;,    
+    u_spell text comment &apos;&#x59D3;&#x540D;&#x62FC;&#x97F3;&apos;,    
+    key u_name(u_name)    
+)engine=InnoDB default charset=utf8 comment=&apos;&#x4EBA;&#x5458;&#x8868;&apos;;    
+desc p_user;    
+show create table p_user;        
+
+DROP TABLE IF EXISTS `tdl_workshop_daily_two_config`;
+CREATE TABLE IF NOT EXISTS `tdl_workshop_daily_two_config`(    
+    `twt_id` BIGINT(20) UNSIGNED NOT NULL DEFAULT &apos;0&apos; PRIMARY KEY COMMENT &apos;&#x4E3B;&#x952E;&apos;,    
+    `twd_id` BIGINT(20) UNSIGNED NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&#x4E3B;&#x8868;&#x4E3B;&#x952E;&apos;,    
+    `did` BIGINT(20) UNSIGNED NULL COMMENT &apos;&#x503C;&#x73ED;&#x5730;&#x70B9;&apos;    
+)ENGINE=MYISAM ROW_FORMAT=DYNAMIC DEFAULT CHARSET=utf8 COMMENT=&apos;&#x8F66;&#x95F4;&#x65E5;&#x62A5;&#x914D;&#x7F6E;&#x4E3B;&#x8868;-&#x503C;&#x73ED;&#x5730;&#x70B9;&apos;        
+
+
+mysql&#x66F4;&#x6539;&#x5BC6;&#x7801;&#xFF1A;
+1. update mysql.user set password = password(&apos;newpasswd&apos;) where user = &apos;&#x7528;&#x6237;&#x540D;&apos;;    //&#x4FEE;&#x6539;&#x5BC6;&#x7801;    
+2. flush privileges;                //&#x5237;&#x65B0;&#x6570;&#x636E;&#x5E93;    
+&#x6216;    
+3. grant select,insert,update,delete,show_db on &#x6570;&#x636E;&#x5E93;&#x540D;.* to &#x7528;&#x6237;&#x540D;@&quot;&#x4E3B;&#x673A;&#x540D;&quot; Identified by &quot;&#x5BC6;&#x7801;&quot;;               
+
+mysqlcheck&#x4F7F;&#x7528;&#xFF1A; 
+1. mysqlcheck -r -u root -p -A  &#x4FEE;&#x590D;&#x6240;&#x6709;&#x7684;&#x8868;    
+2. mysqlcheck -r -u root -p db_name table_name  &#x4FEE;&#x590D;&#x67D0;&#x6570;&#x636E;&#x5E93;&#x7684;&#x67D0;&#x8868;    
+
+CREATE DATABASE db_name    
+DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;    
+</code></pre><p>&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x7269;&#xFF1A;<br>1.&#x539F;&#x5B50;&#x6027;&#xFF1A;&#x4E0D;&#x53EF;&#x5206;&#x5272;&#x3002;<br>2.&#x4E00;&#x81F4;&#x6027;&#xFF1A;&#x4E8B;&#x7269;&#x5FC5;&#x987B;&#x4F7F;&#x6570;&#x636E;&#x5E93;&#x4ECE;&#x4E00;&#x4E2A;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x53D8;&#x6362;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x3002;<br>3.&#x9694;&#x79BB;&#x6027;&#xFF1A;&#x4E0D;&#x88AB;&#x5176;&#x4ED6;&#x4E8B;&#x7269;&#x5E72;&#x6270;&#x3002;<br>4.&#x6301;&#x4E45;&#x6027;&#xFF1A;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x4E00;&#x65E6;&#x88AB;&#x63D0;&#x4EA4;&#xFF0C;&#x5B83;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#x7684;&#x6539;&#x53D8;&#x5C31;&#x662F;&#x6C38;&#x4E45;&#x6027;&#x7684;&#x3002;    </p>
+<p>&#x95EE;&#x9898;&#xFF1A;<br>1.&#x810F;&#x8BFB;&#xFF1A;<br>2.&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;<br>3.&#x5E7B;&#x8BFB;    </p>
 
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -547,7 +692,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.5 mysql","level":"1.2.5","depth":2,"next":{"title":"2. PHP篇","level":"1.3","depth":1,"path":"php/php.md","ref":"php/php.md","articles":[{"title":"1.1 基础语法","level":"1.3.1","depth":2,"path":"php/base.md","ref":"php/base.md","articles":[]},{"title":"1.2 扩展库","level":"1.3.2","depth":2,"path":"php/ext.md","ref":"php/ext.md","articles":[]},{"title":"1.3 实战案例","level":"1.3.3","depth":2,"path":"php/example.md","ref":"php/example.md","articles":[]},{"title":"1.4 算法案例","level":"1.3.4","depth":2,"path":"php/algorithm.md","ref":"php/algorithm.md","articles":[{"title":"1.4.1 PHP的LRU实现","level":"1.3.4.1","depth":3,"path":"php/algorithm/algorithm-1.md","ref":"php/algorithm/algorithm-1.md","articles":[]},{"title":"1.4.2 排序算法","level":"1.3.4.2","depth":3,"path":"php/algorithm/algorithm-2.md","ref":"php/algorithm/algorithm-2.md","articles":[]},{"title":"1.4.3 链表算法","level":"1.3.4.3","depth":3,"path":"php/algorithm/algorithm-3.md","ref":"php/algorithm/algorithm-3.md","articles":[]},{"title":"1.4.4 算法案例","level":"1.3.4.4","depth":3,"path":"php/algorithm/algorithm-4.md","ref":"php/algorithm/algorithm-4.md","articles":[]}]}]},"previous":{"title":"1.4 sqlite3","level":"1.2.4","depth":2,"path":"db/sqlite3.md","ref":"db/sqlite3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","insert-logo","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 30px; min-height: 30px","url":"/images/logo.png"}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"db/mysql.md","mtime":"2019-05-05T10:25:32.210Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-14T08:50:10.765Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.5 mysql","level":"1.2.5","depth":2,"next":{"title":"2. PHP篇","level":"1.3","depth":1,"path":"php/php.md","ref":"php/php.md","articles":[{"title":"1.1 基础语法","level":"1.3.1","depth":2,"path":"php/base.md","ref":"php/base.md","articles":[]},{"title":"1.2 扩展库","level":"1.3.2","depth":2,"path":"php/ext.md","ref":"php/ext.md","articles":[]},{"title":"1.3 实战案例","level":"1.3.3","depth":2,"path":"php/example.md","ref":"php/example.md","articles":[]},{"title":"1.4 算法案例","level":"1.3.4","depth":2,"path":"php/algorithm.md","ref":"php/algorithm.md","articles":[{"title":"1.4.1 PHP的LRU实现","level":"1.3.4.1","depth":3,"path":"php/algorithm/algorithm-1.md","ref":"php/algorithm/algorithm-1.md","articles":[]},{"title":"1.4.2 排序算法","level":"1.3.4.2","depth":3,"path":"php/algorithm/algorithm-2.md","ref":"php/algorithm/algorithm-2.md","articles":[]},{"title":"1.4.3 链表算法","level":"1.3.4.3","depth":3,"path":"php/algorithm/algorithm-3.md","ref":"php/algorithm/algorithm-3.md","articles":[]},{"title":"1.4.4 算法案例","level":"1.3.4.4","depth":3,"path":"php/algorithm/algorithm-4.md","ref":"php/algorithm/algorithm-4.md","articles":[]}]}]},"previous":{"title":"1.4 sqlite3","level":"1.2.4","depth":2,"path":"db/sqlite3.md","ref":"db/sqlite3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"db/mysql.md","mtime":"2019-05-14T09:13:39.591Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-14T09:35:58.335Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -562,10 +707,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
         
     
         
