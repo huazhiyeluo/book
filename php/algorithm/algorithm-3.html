@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.4.3 算法案例 · 止于唇齿，掩于岁月。</title>
+        <title>1.4.3 链表算法 · 止于唇齿，掩于岁月。</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -336,7 +336,7 @@
                 <a href="algorithm-3.html">
             
                     
-                    1.4.3 算法案例
+                    1.4.3 链表算法
             
                 </a>
             
@@ -468,7 +468,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >1.4.3 算法案例</a>
+        <a href="../.." >1.4.3 链表算法</a>
     </h1>
 </div>
 
@@ -486,7 +486,203 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <p>&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x4E4B;PHP&#x5B9E;&#x73B0;&#x94FE;&#x8868;&#x7C7B;&#xFF08;&#x5355;&#x94FE;&#x8868;/&#x53CC;&#x94FE;&#x8868;/&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#xFF09;<br>&#x94FE;&#x8868;&#x662F;&#x7531;&#x4E00;&#x7EC4;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#x7684;&#x96C6;&#x5408;&#x3002;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x6307;&#x5411;&#x5B83;&#x7684;&#x540E;&#x7EE7;&#x3002;&#x6307;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5F15;&#x7528;&#x53EB;&#x505A;&#x94FE;&#x3002;<br>&#x94FE;&#x8868;&#x5206;&#x4E3A;&#x5355;&#x94FE;&#x8868;&#x3001;&#x53CC;&#x94FE;&#x8868;&#x3001;&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#x3002;  </p>
+<h4 id="1-&#x5355;&#x5411;&#x94FE;&#x8868;">1. &#x5355;&#x5411;&#x94FE;&#x8868;</h4>
+<p><img src="../../images/algorithm/1.png" alt="&#x5355;&#x5411;&#x94FE;&#x8868;">
+&#x63D2;&#x5165;&#xFF1A;&#x94FE;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6548;&#x7387;&#x5F88;&#x9AD8;&#x3002;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x5B83;&#x524D;&#x9762;&#x7684;&#x8282;&#x70B9;(&#x524D;&#x9A71;)&#xFF0C;&#x4F7F;&#x5176;&#x6307;&#x5411;&#x65B0;&#x52A0;&#x5165;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x65B0;&#x52A0;&#x5165;&#x7684;&#x8282;&#x70B9;&#x5219;&#x6307;&#x5411;&#x539F;&#x6765;&#x524D;&#x9A71;&#x6307;&#x5411;&#x7684;&#x8282;&#x70B9;&#xFF08;&#x89C1;&#x4E0B;&#x56FE;&#xFF09;&#x3002;
+<img src="../../images/algorithm/2.png" alt="&#x5355;&#x5411;&#x94FE;&#x8868;&#x63D2;&#x5165;&#x8282;&#x70B9;"></p>
+<p>&#x7531;&#x4E0A;&#x56FE;&#x53EF;&#x77E5;&#xFF0C;B&#x3001;C&#x4E4B;&#x95F4;&#x63D2;&#x5165;D&#xFF0C;&#x4E09;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x4E3A;</p>
+<p>current&#x4E3A;&#x63D2;&#x5165;&#x8282;&#x70B9;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;
+current-&gt;next = new              // B&#x8282;&#x70B9;&#x6307;&#x5411;&#x65B0;&#x8282;&#x70B9;D<br>new-&gt;next = current-&gt;next        // &#x65B0;&#x8282;&#x70B9;D&#x6307;&#x5411;B&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;C<br>&#x5220;&#x9664;&#xFF1A;&#x4ECE;&#x94FE;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5C06;&#x5F85;&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x6307;&#x5411;&#x5F85;&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x5F85;&#x5220;&#x9664;&#x5143;&#x7D20;&#x6307;&#x5411; null&#xFF0C;&#x5143;&#x7D20;&#x5C31;&#x5220;&#x9664;&#x6210;&#x529F;&#x4E86;&#xFF08;&#x89C1;&#x4E0B;&#x56FE;&#xFF09;&#x3002;   </p>
+<p><img src="../../images/algorithm/3.png" alt="&#x5355;&#x5411;&#x94FE;&#x8868;&#x63D2;&#x5165;&#x8282;&#x70B9;"></p>
+<p>&#x7531;&#x4E0A;&#x56FE;&#x53EF;&#x77E5;&#xFF0C;A&#x3001;C&#x4E4B;&#x95F4;&#x5220;&#x9664;B&#xFF0C;&#x4E09;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x4E3A;   </p>
+<p>current&#x4E3A;&#x8981;&#x5220;&#x9664;&#x8282;&#x70B9;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;<br>current-&gt;next = current-&gt;next-&gt;next    // A&#x8282;&#x70B9;&#x6307;&#x5411;C&#x8282;&#x70B9;   </p>
+<pre><code>&lt;?php
+
+class Node
+{
+    public $data;
+
+    private $next;
+
+    public function __construct($data)
+    {
+        $this-&gt;data = $data;
+    }
+
+    public function setNext($next)
+    {
+        $this-&gt;next = $next;
+    }
+
+    public function getNext()
+    {
+        return $this-&gt;next;
+    }
+}
+
+class Links
+{
+    private $header;
+    public function __construct($data)
+    {
+        $this-&gt;header = new Node($data);
+        //$this-&gt;header-&gt;setNext($this-&gt;header); &#x52A0;&#x4E0A;&#x8FD9;&#x53E5;&#x8BDD;&#x4E3A;&#x5FAA;&#x73AF;&#x5217;&#x8868;
+    }
+
+    public function find($data)
+    {
+        $current = $this-&gt;header;
+        while ($current-&gt;data != $data) {
+            $current = $current-&gt;getNext();
+        }
+        return $current;
+    }
+
+    public function put($header, $data)
+    {
+        $node = new Node($data);
+
+        $current = $this-&gt;find($header);
+        if ($current-&gt;data &amp;&amp; $current-&gt;getNext() != $this-&gt;header) {
+            $node-&gt;setNext($current-&gt;getNext());
+            $current-&gt;setNext($node);
+        } else {
+            $current-&gt;setNext($node);
+            $node-&gt;setNext($this-&gt;header);
+        }
+
+    }
+
+    public function del($data)
+    {
+        $current = $this-&gt;header;
+        while ($current-&gt;getNext()-&gt;data != $data) {
+            $current = $current-&gt;getNext();
+        }
+
+        if ($current-&gt;getNext() != $this-&gt;header) {
+            // &#x94FE;&#x8868;&#x4E2D;&#x95F4;
+            $current-&gt;setNext($current-&gt;getNext()-&gt;getNext());
+        } else {
+            // &#x94FE;&#x8868;&#x5C3E;&#x7AEF;
+            $current-&gt;setNext($this-&gt;header);
+        }
+    }
+
+}
+
+$ln = new Links(&apos;&apos;);
+// print_r($ln);
+
+$ln-&gt;put(&apos;&apos;, &apos;two&apos;);
+// print_r($ln);
+
+$ln-&gt;put(&apos;two&apos;, &apos;three&apos;);
+// print_r($ln);
+
+$ln-&gt;put(&apos;three&apos;, &apos;four&apos;);
+// print_r($ln);
+// exit;
+
+$ln-&gt;del(&apos;three&apos;);
+print_r($ln);
+</code></pre><h4 id="2-&#x53CC;&#x5411;&#x5411;&#x94FE;&#x8868;">2. &#x53CC;&#x5411;&#x5411;&#x94FE;&#x8868;</h4>
+<p>&#x5355;&#x94FE;&#x8868;&#x4ECE;&#x94FE;&#x8868;&#x7684;&#x5934;&#x8282;&#x70B9;&#x904D;&#x5386;&#x5230;&#x5C3E;&#x8282;&#x70B9;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x4ECE;&#x540E;&#x5411;&#x524D;&#x904D;&#x5386;&#x5C31;&#x6CA1;&#x90A3;&#x4E48;&#x7B80;&#x5355;&#x4E86;&#x3002;&#x5B83;&#x7684;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x70B9;&#x4E2D;&#x90FD;&#x6709;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x5206;&#x522B;&#x6307;&#x5411;&#x76F4;&#x63A5;&#x540E;&#x7EE7;&#x548C;&#x76F4;&#x63A5;&#x524D;&#x9A71;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;&#x4ECE;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x5F00;&#x59CB;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x5730;&#x8BBF;&#x95EE;&#x5B83;&#x7684;&#x524D;&#x9A71;&#x7ED3;&#x70B9;&#x548C;&#x540E;&#x7EE7;&#x7ED3;&#x70B9;&#x3002;<br><img src="../../images/algorithm/4.png" alt="&#x5355;&#x5411;&#x94FE;&#x8868;">
+&#x63D2;&#x5165;&#xFF1A;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6307;&#x51FA;&#x8BE5;&#x8282;&#x70B9;&#x6B63;&#x786E;&#x7684;&#x524D;&#x9A71;&#x548C;&#x540E;&#x7EE7;&#x3002;<br>&#x4FEE;&#x6539;&#x5F85;&#x63D2;&#x5165;&#x8282;&#x70B9;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x7684;next&#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x5176;&#x6307;&#x5411;&#x65B0;&#x52A0;&#x5165;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x65B0;&#x63D2;&#x5165;&#x7684;&#x8282;&#x70B9;&#x7684;next&#x5C5E;&#x6027;&#x5219;&#x6307;&#x5411;&#x539F;&#x6765;&#x524D;&#x9A71;&#x6307;&#x5411;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x539F;&#x6765;&#x524D;&#x9A71;&#x6307;&#x5411;&#x7684;&#x8282;&#x70B9;&#x7684;previous&#x5C5E;&#x6027;&#x6307;&#x5411;&#x65B0;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x65B0;&#x52A0;&#x5165;&#x8282;&#x70B9;&#x7684;previous&#x5C5E;&#x6027;&#x6307;&#x5411;&#x5B83;&#x524D;&#x9A71;&#x8282;&#x70B9;&#xFF08;&#x89C1;&#x4E0B;&#x56FE;&#xFF09;&#x3002;<br><img src="../../images/algorithm/5.png" alt="&#x5355;&#x5411;&#x94FE;&#x8868;&#x63D2;&#x5165;&#x8282;&#x70B9;">
+&#x7531;&#x4E0A;&#x56FE;&#x53EF;&#x77E5;&#xFF0C;B&#x3001;C&#x4E4B;&#x95F4;&#x63D2;&#x5165;D&#xFF0C;&#x4E09;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x4E3A;<br>current&#x4E3A;&#x63D2;&#x5165;&#x8282;&#x70B9;&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;<br>current-&gt;next = new              // B&#x7684;next&#x5C5E;&#x6027;&#x6307;&#x5411;&#x65B0;&#x8282;&#x70B9;D<br>new-&gt;next = current-&gt;next        // &#x65B0;&#x8282;&#x70B9;D&#x7684;next&#x5C5E;&#x6027;&#x6307;&#x5411;B&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;C<br>current-&gt;next-&gt;previous = new    // B&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;C&#x7684;previous&#x5C5E;&#x6027;&#x6307;&#x5411;&#x65B0;&#x8282;&#x70B9;D&#xFF08;&#x539F;&#x5148;&#x662F;C&#x7684;previous&#x5C5E;&#x6027;&#x6307;&#x5411;B&#xFF09;<br>&#x5220;&#x9664;&#xFF1A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x6BD4;&#x5355;&#x5411;&#x94FE;&#x8868;&#x7684;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x67E5;&#x627E;&#x524D;&#x9A71;&#x8282;&#x70B9;&#x4E86;&#x3002;<br>&#x9996;&#x5148;&#x9700;&#x8981;&#x5728;&#x94FE;&#x8868;&#x4E2D;&#x627E;&#x51FA;&#x5B58;&#x50A8;&#x5F85;&#x5220;&#x9664;&#x6570;&#x636E;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;&#x8BE5;&#x8282;&#x70B9;&#x524D;&#x9A71;&#x7684; next &#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x5176;&#x6307;&#x5411;&#x5F85;&#x5220;&#x9664;&#x8282;&#x70B9;&#x7684;&#x540E;&#x7EE7;;&#x8BBE;&#x7F6E;&#x8BE5;&#x8282;&#x70B9;&#x540E;&#x7EE7;&#x7684; previous &#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x5176;&#x6307;&#x5411;&#x5F85;&#x5220;&#x9664;&#x8282;&#x70B9;&#x7684;&#x524D;&#x9A71;&#x3002;<br><img src="../../images/algorithm/6.png" alt="&#x5355;&#x5411;&#x94FE;&#x8868;&#x63D2;&#x5165;&#x8282;&#x70B9;">
+&#x7531;&#x4E0A;&#x56FE;&#x53EF;&#x77E5;&#xFF0C;B&#x3001;C&#x4E4B;&#x95F4;&#x5220;&#x9664;D&#xFF0C;&#x4E09;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x4E3A;<br>current&#x4E3A;&#x8981;&#x5220;&#x9664;&#x7684;&#x8282;&#x70B9;<br>current-&gt;previous-&gt;next = current-&gt;next        // B&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;A&#x7684;next&#x5C5E;&#x6027;&#x6307;&#x5411;B&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;C<br>current-&gt;next-&gt;previous = current-&gt;previous    // B&#x7684;&#x540E;&#x7EE7;&#x8282;&#x70B9;C&#x7684;previous&#x5C5E;&#x6027;&#x6307;&#x5411;B&#x7684;&#x524D;&#x9A71;&#x8282;&#x70B9;A<br>current-&gt;previous = null                       // B&#x7684;previous&#x5C5E;&#x6027;&#x6307;&#x5411;null<br>current-&gt;next = null                           // B&#x7684;next&#x5C5E;&#x6027;&#x6307;&#x5411;null     </p>
+<pre><code>&lt;?php
+
+class Node
+{
+    public $data;
+
+    private $next;
+
+    public function __construct($data)
+    {
+        $this-&gt;data = $data;
+    }
+
+    public function setNext($next)
+    {
+        $this-&gt;next = $next;
+    }
+
+    public function getNext()
+    {
+        return $this-&gt;next;
+    }
+}
+
+class Links
+{
+    private $header;
+    public function __construct($data)
+    {
+        $this-&gt;header = new Node($data);
+        $this-&gt;header-&gt;setNext($this-&gt;header);
+    }
+
+    public function find($data)
+    {
+        $current = $this-&gt;header;
+        while ($current-&gt;data != $data) {
+            $current = $current-&gt;getNext();
+        }
+        return $current;
+    }
+
+    public function put($header, $data)
+    {
+        $node = new Node($data);
+
+        $current = $this-&gt;find($header);
+        if ($current-&gt;data &amp;&amp; $current-&gt;getNext() != $this-&gt;header) {
+            $node-&gt;setNext($current-&gt;getNext());
+            $current-&gt;setNext($node);
+        } else {
+            $current-&gt;setNext($node);
+            $node-&gt;setNext($this-&gt;header);
+        }
+
+    }
+
+    public function del($data)
+    {
+        $current = $this-&gt;header;
+        while ($current-&gt;getNext()-&gt;data != $data) {
+            $current = $current-&gt;getNext();
+        }
+
+        if ($current-&gt;getNext() != $this-&gt;header) {
+            // &#x94FE;&#x8868;&#x4E2D;&#x95F4;
+            $current-&gt;setNext($current-&gt;getNext()-&gt;getNext());
+        } else {
+            // &#x94FE;&#x8868;&#x5C3E;&#x7AEF;
+            $current-&gt;setNext($this-&gt;header);
+        }
+    }
+
+}
+
+$ln = new Links(&apos;&apos;);
+// print_r($ln);
+
+$ln-&gt;put(&apos;&apos;, &apos;two&apos;);
+// print_r($ln);
+
+$ln-&gt;put(&apos;two&apos;, &apos;three&apos;);
+// print_r($ln);
+
+$ln-&gt;put(&apos;three&apos;, &apos;four&apos;);
+// print_r($ln);
+// exit;
+
+$ln-&gt;del(&apos;three&apos;);
+print_r($ln);
+</code></pre>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
@@ -546,7 +742,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.4.3 算法案例","level":"1.3.4.3","depth":3,"next":{"title":"1.4.4 算法案例","level":"1.3.4.4","depth":3,"path":"php/algorithm/algorithm-4.md","ref":"php/algorithm/algorithm-4.md","articles":[]},"previous":{"title":"1.4.2 排序算法","level":"1.3.4.2","depth":3,"path":"php/algorithm/algorithm-2.md","ref":"php/algorithm/algorithm-2.md","articles":[]},"dir":"neutral"},"config":{"plugins":["chapter-fold","code","insert-logo","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 30px; min-height: 30px","url":"/images/logo.png"}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"php/algorithm/algorithm-3.md","mtime":"2019-05-13T07:43:41.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-13T10:35:30.051Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.4.3 链表算法","level":"1.3.4.3","depth":3,"next":{"title":"1.4.4 算法案例","level":"1.3.4.4","depth":3,"path":"php/algorithm/algorithm-4.md","ref":"php/algorithm/algorithm-4.md","articles":[]},"previous":{"title":"1.4.2 排序算法","level":"1.3.4.2","depth":3,"path":"php/algorithm/algorithm-2.md","ref":"php/algorithm/algorithm-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","insert-logo","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 30px; min-height: 30px","url":"/images/logo.png"}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"php/algorithm/algorithm-3.md","mtime":"2019-05-14T08:29:07.352Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-14T08:50:10.765Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
