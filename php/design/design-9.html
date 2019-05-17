@@ -644,7 +644,91 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <p>1.&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;&#xFF08;Decorator&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x5730;&#x6DFB;&#x52A0;&#x4FEE;&#x6539;&#x7C7B;&#x7684;&#x529F;&#x80FD;<br>2.&#x4E00;&#x4E2A;&#x7C7B;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x9879;&#x529F;&#x80FD;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5728;&#x4FEE;&#x6539;&#x5E76;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F20;&#x7EDF;&#x7684;&#x7F16;&#x7A0B;&#x6A21;&#x5F0F;&#xFF0C;&#x9700;&#x8981;&#x5199;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x5B83;&#xFF0C;&#x5E76;&#x91CD;&#x65B0;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;<br>3.&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;&#xFF0C;&#x4EC5;&#x9700;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6700;&#x5927;&#x7684;&#x7075;&#x6D3B;&#x6027;   </p>
+<pre><code>&lt;?php
+
+namespace Lib;
+
+interface Decorator
+{
+    public function before();
+
+    public function after();
+}
+</code></pre><pre><code>&lt;?php
+
+
+namespace Lib;
+
+class Draw
+{
+    protected $decorator;
+
+    public function pencil()
+    {
+        $this-&gt;beforePencil();
+
+        echo &quot;&#x6211;&#x662F;&#x88C5;&#x9970;&#x5668;&quot;;
+
+        $this-&gt;afterPencil();
+    }
+
+    public function addDecorator($decorator)
+    {
+        $this-&gt;decorator[] = $decorator;
+    }
+
+    public function beforePencil()
+    {
+        if($this-&gt;decorator)
+        {
+            foreach ($this-&gt;decorator as $decorator)
+            {
+                $decorator-&gt;before();
+            }
+        }
+
+    }
+
+    public function afterPencil()
+    {
+        if($this-&gt;decorator)
+        {
+            $tmp = array_reverse($this-&gt;decorator);
+            foreach ($tmp as $decorator) {
+                $decorator-&gt;after();
+            }
+        }
+    }
+
+}
+</code></pre><pre><code>&lt;?php
+
+namespace Lib;
+
+class ColorDecorator implements \Lib\Decorator
+{
+
+    public function before()
+    {
+        // TODO: Implement before() method.
+
+        echo &quot;&#x753B;&#x4E0A;&#x989C;&#x8272;&quot;;
+    }
+
+    public function after()
+    {
+        // TODO: Implement after() method.
+    }
+
+}
+</code></pre><pre><code>$draw = new \Lib\Draw();
+
+$colorDecorator = new \Lib\ColorDecorator();
+
+$draw-&gt;addDecorator($colorDecorator);
+$draw-&gt;pencil();
+</code></pre>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
@@ -704,7 +788,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.5.9 装饰器模式","level":"1.3.5.9","depth":3,"next":{"title":"1.5.10 迭代器模式","level":"1.3.5.10","depth":3,"path":"php/design/design-10.md","ref":"php/design/design-10.md","articles":[]},"previous":{"title":"1.5.8 原型模式","level":"1.3.5.8","depth":3,"path":"php/design/design-8.md","ref":"php/design/design-8.md","articles":[]},"dir":"neutral"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"php/design/design-9.md","mtime":"2019-05-15T09:02:11.382Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-16T09:55:53.556Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.5.9 装饰器模式","level":"1.3.5.9","depth":3,"next":{"title":"1.5.10 迭代器模式","level":"1.3.5.10","depth":3,"path":"php/design/design-10.md","ref":"php/design/design-10.md","articles":[]},"previous":{"title":"1.5.8 原型模式","level":"1.3.5.8","depth":3,"path":"php/design/design-8.md","ref":"php/design/design-8.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"php/design/design-9.md","mtime":"2019-05-17T06:59:19.383Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-17T08:23:48.795Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

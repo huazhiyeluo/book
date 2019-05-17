@@ -644,7 +644,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <p>&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;clone&#x5C31;&#x662F;&#x5185;&#x5B58;&#x62F7;&#x8D1D;&#xFF0C;&#x6BD4;new&#x7684;&#x597D;&#x5904;&#x662F;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x5FEB;&#x901F;&#xFF0C;&#x9002;&#x5408;&#x5927;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;   </p>
+<p>1.&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x4E0E;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x4F5C;&#x7528;&#x7C7B;&#x4F3C;,&#x90FD;&#x662F;&#x7528;&#x6765;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;<br>2.&#x4E0E;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x7684;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;,&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x662F;&#x5148;&#x521B;&#x5EFA;&#x597D;&#x4E00;&#x4E2A;&#x539F;&#x578B;&#x5BF9;&#x8C61;,&#x7136;&#x540E;&#x901A;&#x8FC7;clone&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x6765;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5BF9;&#x8C61;,&#x8FD9;<br>3.&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x9002;&#x7528;&#x4E8E;&#x5927;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;,&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5927;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x5F88;&#x5927;&#x7684;&#x5F00;&#x9500;,&#x5982;&#x679C;&#x6BCF;&#x6B21;new&#x5C31;&#x4F1A;&#x6D88;&#x8017;&#x5F88;&#x5927;,&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x4EC5;&#x9700;&#x5185;&#x5B58;&#x62F7;&#x8D1D;&#x5373;&#x53EF;</p>
+<pre><code>&lt;?php
+
+namespace Lib;
+
+interface Prototype
+{
+    public function shallowCopy();
+
+    public function deepCopy();
+}
+</code></pre><pre><code>&lt;?php
+
+namespace Lib;
+
+class ConcretePrototype implements \Lib\Prototype
+{
+    public function shallowCopy()
+    {
+        return clone $this;
+    }
+
+    public function deepCopy()
+    {
+        $serialize_obj = serialize($this);
+        return unserialize($serialize_obj);
+    }
+}
+</code></pre><pre><code>$pro = new \Lib\ConcretePrototype();
+
+$pro-&gt;name = &apos;liaozongchao&apos;;
+$pro-&gt;age = 25;
+
+print_r($pro);
+
+$proCopy = $pro-&gt;shallowCopy();
+$proCopy-&gt;age = 26;
+
+print_r($proCopy);
+print_r($pro);
+</code></pre>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
@@ -704,7 +745,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.5.8 原型模式","level":"1.3.5.8","depth":3,"next":{"title":"1.5.9 装饰器模式","level":"1.3.5.9","depth":3,"path":"php/design/design-9.md","ref":"php/design/design-9.md","articles":[]},"previous":{"title":"1.5.7 观察者模式","level":"1.3.5.7","depth":3,"path":"php/design/design-7.md","ref":"php/design/design-7.md","articles":[]},"dir":"neutral"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"php/design/design-8.md","mtime":"2019-05-15T09:02:11.382Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-16T09:55:53.556Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.5.8 原型模式","level":"1.3.5.8","depth":3,"next":{"title":"1.5.9 装饰器模式","level":"1.3.5.9","depth":3,"path":"php/design/design-9.md","ref":"php/design/design-9.md","articles":[]},"previous":{"title":"1.5.7 观察者模式","level":"1.3.5.7","depth":3,"path":"php/design/design-7.md","ref":"php/design/design-7.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"php/design/design-8.md","mtime":"2019-05-17T07:25:08.707Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-17T08:23:48.795Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
