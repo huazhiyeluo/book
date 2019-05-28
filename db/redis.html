@@ -285,6 +285,64 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../php/example/example-1.html">
+            
+                <a href="../php/example/example-1.html">
+            
+                    
+                    1.3.1 composer用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../php/example/example-2.html">
+            
+                <a href="../php/example/example-2.html">
+            
+                    
+                    1.3.2 排序算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../php/example/example-3.html">
+            
+                <a href="../php/example/example-3.html">
+            
+                    
+                    1.3.3 链表算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.4" data-path="../php/example/example-4.html">
+            
+                <a href="../php/example/example-4.html">
+            
+                    
+                    1.3.4 算法案例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.3.4" data-path="../php/algorithm.html">
@@ -1014,6 +1072,73 @@ Redis keys&#x8FC7;&#x671F;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x88A
 &#x5F53;&#x6267;&#x884C; DISCARD &#x547D;&#x4EE4;&#x65F6;&#xFF0C; &#x4E8B;&#x52A1;&#x4F1A;&#x88AB;&#x653E;&#x5F03;&#xFF0C; &#x4E8B;&#x52A1;&#x961F;&#x5217;&#x4F1A;&#x88AB;&#x6E05;&#x7A7A;&#xFF0C; &#x5E76;&#x4E14;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x4ECE;&#x4E8B;&#x52A1;&#x72B6;&#x6001;&#x4E2D;&#x9000;&#x51FA;&#xFF1A;</p>
 <p>WATCH &#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x4E3A; Redis &#x4E8B;&#x52A1;&#x63D0;&#x4F9B; check-and-set &#xFF08;CAS&#xFF09;&#x884C;&#x4E3A;&#x3002;</p>
 <p>&#x88AB; WATCH &#x7684;&#x952E;&#x4F1A;&#x88AB;&#x76D1;&#x89C6;&#xFF0C;&#x5E76;&#x4F1A;&#x53D1;&#x89C9;&#x8FD9;&#x4E9B;&#x952E;&#x662F;&#x5426;&#x88AB;&#x6539;&#x52A8;&#x8FC7;&#x4E86;&#x3002; &#x5982;&#x679C;&#x6709;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x88AB;&#x76D1;&#x89C6;&#x7684;&#x952E;&#x5728; EXEC &#x6267;&#x884C;&#x4E4B;&#x524D;&#x88AB;&#x4FEE;&#x6539;&#x4E86;&#xFF0C; &#x90A3;&#x4E48;&#x6574;&#x4E2A;&#x4E8B;&#x52A1;&#x90FD;&#x4F1A;&#x88AB;&#x53D6;&#x6D88;&#xFF0C; EXEC &#x8FD4;&#x56DE;nil-reply&#x6765;&#x8868;&#x793A;&#x4E8B;&#x52A1;&#x5DF2;&#x7ECF;&#x5931;&#x8D25;&#x3002;</p>
+<h4 id="redis-&#x4E3B;&#x4ECE;&#x5206;&#x5E03;&#x914D;&#x7F6E;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x8BE6;&#x89E3;">redis &#x4E3B;&#x4ECE;&#x5206;&#x5E03;&#x914D;&#x7F6E;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x8BE6;&#x89E3;</h4>
+<p>&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF1A;127.0.0.1 6379  &#x4ECE;&#x670D;&#x52A1;&#x5668;&#xFF1A;127.0.0.1 6380</p>
+<p>1&#x3001;&#x9996;&#x5148;&#xFF0C;&#x4FEE;&#x6539; Master&#x4E0A;&#x7684;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF08;&#x5728; redis.conf &#x4FEE;&#x6539;&#x914D;&#x7F6E;&#xFF09;&#xFF1A;<br>a. &#x7981;&#x7528; &#x4E3B;&#x670D;&#x52A1;&#x5668; snapshot    </p>
+<ul>
+<li>save 900 1 #&#x7981;&#x7528;Snapshot</li>
+<li>save 300 10</li>
+<li>save 60 10000</li>
+</ul>
+<p>b. &#x7981;&#x7528; AOF    </p>
+<ul>
+<li>appendonly no #&#x7981;&#x7528;AOF &#xFF08;&#x8BE5;&#x64CD;&#x4F5C;&#x9ED8;&#x8BA4;&#x5C31;&#x662F;&#x7981;&#x7528;&#x7684;&#xFF09;
+c. &#x8BBE;&#x7F6E; master &#x5BC6;&#x7801; &#xFF08;&#x53EF;&#x9009;&#xFF09;    </li>
+<li>requirepass  liao</li>
+</ul>
+<p>2&#x3001;&#x4FEE;&#x6539; Slave&#xFF08;redis6666&#xFF09;&#x4E0A;&#x7684;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;    </p>
+<p>a. &#x542F;&#x52A8; &#x4ECE;&#x670D;&#x52A1;&#x5668;&#x7684; Snapshot    </p>
+<ul>
+<li>save 900 1 #&#x542F;&#x7528;Snapshot &#xFF08;&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#xFF09;</li>
+<li>save 300 10</li>
+<li>save 60 10000</li>
+</ul>
+<p>b. &#x542F;&#x52A8; &#x4ECE;&#x670D;&#x52A1;&#x5668; AOF    </p>
+<ul>
+<li>appendonly yes  #&#x542F;&#x7528;AOF&#xFF08;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;&#xFF09;</li>
+<li>appendfilename  appendonly.aof  #AOF&#x6587;&#x4EF6;&#x7684;&#x540D;&#x79F0;</li>
+</ul>
+<p>c. &#x8BBE;&#x7F6E; slaveof    </p>
+<ul>
+<li>slaveof 127.0.0.1 6379</li>
+<li>masterauth liao</li>
+</ul>
+<p>&#x67E5;&#x770B;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x8FDE;&#x63A5;&#x72B6;&#x6001;&#xFF1A; info replication</p>
+<p>&#x56DB;&#x3001; &#x5907;&#x4EFD;&#x6570;&#x636E;&#x6D4B;&#x8BD5;<br>1&#x3001; Master &#x63D2;&#x5165;&#x4E00;&#x6761;&#x6570;&#x636E;&#xFF1A;    </p>
+<pre><code>127.0.0.1:6666&gt; set name helloworld
+OK
+</code></pre><p>2&#x3001;Slave &#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF1A;    </p>
+<pre><code>127.0.0.1:7777&gt; get name
+&quot;helloworld&quot;
+</code></pre><p>&#x64CD;&#x4F5C;&#x5230;&#x8FD9;&#x91CC;&#xFF1A; redis &#x4E3B;&#x4ECE;&#x914D;&#x7F6E;&#x6210;&#x529F;&#x4E86;&#x3002;    </p>
+<p>&#x4E94;&#x3001;&#x5BB9;&#x707E;&#x673A;&#x5236;&#x6D4B;&#x8BD5;<br>1&#x3001;Master &#x6302;&#x6389;&#x4E86;&#xFF1A;    </p>
+<pre><code>127.0.0.1:6666&gt; SHUTDOWN  # &#x6216;&#x8005; &#x76F4;&#x63A5; kill &#x6389; Master &#x8FDB;&#x7A0B;
+not connected&gt;
+</code></pre><p>2&#x3001; Slave &#x518D;&#x6B21;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF1A;    </p>
+<pre><code>127.0.0.1:7777&gt; get name
+&quot;helloworld&quot;
+</code></pre><p>3&#x3001;&#x6570;&#x636E;&#x6062;&#x590D;    </p>
+<p>&#x5148;&#x5728;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#xFF1A;save
+&#x5C06;Slave&#x4E0A;&#x6570;&#x636E;&#x6587;&#x4EF6; dump.rdb &#x548C; appendonly.aof &#x590D;&#x5236;&#x5230; Master &#x76EE;&#x5F55;&#x4E0A;&#x3002;    </p>
+<p>4&#x3001;&#x542F;&#x52A8; Master &#xFF0C;&#x5206;&#x522B;&#x5728; Master &#x548C; Slave &#x83B7;&#x53D6;&#x6570;&#x636E;&#x3002;    </p>
+<p>&#x6CE8;&#x610F;&#xFF1A; &#x64CD;&#x4F5C;&#x6B65;&#x9AA4;3&#x3001;4 &#x4E0D;&#x53EF;&#x4E92;&#x6362;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x9020;&#x6210;&#x6570;&#x636E;&#x4E22;&#x5931;&#x3002; Master &#x542F;&#x52A8;&#x540E;&#xFF0C;Slave &#x4F1A;&#x81EA;&#x52A8;&#x53BB;&#x540C;&#x6B65;&#x6570;&#x636E;&#x3002;   </p>
+<p>Redis&#x7684;&#x8FC7;&#x671F;&#x7B56;&#x7565;<br>&#x6211;&#x4EEC;&#x90FD;&#x77E5;&#x9053;&#xFF0C;Redis&#x662F;key-value&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;Redis&#x4E2D;&#x7F13;&#x5B58;&#x7684;key&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;Redis&#x7684;&#x8FC7;&#x671F;&#x7B56;&#x7565;&#x5C31;&#x662F;&#x6307;&#x5F53;Redis&#x4E2D;&#x7F13;&#x5B58;&#x7684;key&#x8FC7;&#x671F;&#x4E86;&#xFF0C;Redis&#x5982;&#x4F55;&#x5904;&#x7406;&#x3002;
+&#x8FC7;&#x671F;&#x7B56;&#x7565;&#x901A;&#x5E38;&#x6709;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#xFF1A;   </p>
+<ul>
+<li>&#x5B9A;&#x65F6;&#x8FC7;&#x671F;&#xFF1A;&#x6BCF;&#x4E2A;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key&#x90FD;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5230;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x5C31;&#x4F1A;&#x7ACB;&#x5373;&#x6E05;&#x9664;&#x3002;&#x8BE5;&#x7B56;&#x7565;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x6E05;&#x9664;&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x5185;&#x5B58;&#x5F88;&#x53CB;&#x597D;&#xFF1B;&#x4F46;&#x662F;&#x4F1A;&#x5360;&#x7528;&#x5927;&#x91CF;&#x7684;CPU&#x8D44;&#x6E90;&#x53BB;&#x5904;&#x7406;&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4ECE;&#x800C;&#x5F71;&#x54CD;&#x7F13;&#x5B58;&#x7684;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x548C;&#x541E;&#x5410;&#x91CF;&#x3002;   </li>
+<li>&#x60F0;&#x6027;&#x8FC7;&#x671F;&#xFF1A;&#x53EA;&#x6709;&#x5F53;&#x8BBF;&#x95EE;&#x4E00;&#x4E2A;key&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x5224;&#x65AD;&#x8BE5;key&#x662F;&#x5426;&#x5DF2;&#x8FC7;&#x671F;&#xFF0C;&#x8FC7;&#x671F;&#x5219;&#x6E05;&#x9664;&#x3002;&#x8BE5;&#x7B56;&#x7565;&#x53EF;&#x4EE5;&#x6700;&#x5927;&#x5316;&#x5730;&#x8282;&#x7701;CPU&#x8D44;&#x6E90;&#xFF0C;&#x5374;&#x5BF9;&#x5185;&#x5B58;&#x975E;&#x5E38;&#x4E0D;&#x53CB;&#x597D;&#x3002;&#x6781;&#x7AEF;&#x60C5;&#x51B5;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x5927;&#x91CF;&#x7684;&#x8FC7;&#x671F;key&#x6CA1;&#x6709;&#x518D;&#x6B21;&#x88AB;&#x8BBF;&#x95EE;&#xFF0C;&#x4ECE;&#x800C;&#x4E0D;&#x4F1A;&#x88AB;&#x6E05;&#x9664;&#xFF0C;&#x5360;&#x7528;&#x5927;&#x91CF;&#x5185;&#x5B58;&#x3002;   </li>
+<li>&#x5B9A;&#x671F;&#x8FC7;&#x671F;&#xFF1A;&#x6BCF;&#x9694;&#x4E00;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4F1A;&#x626B;&#x63CF;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x6570;&#x636E;&#x5E93;&#x7684;expires&#x5B57;&#x5178;&#x4E2D;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684;key&#xFF0C;&#x5E76;&#x6E05;&#x9664;&#x5176;&#x4E2D;&#x5DF2;&#x8FC7;&#x671F;&#x7684;key&#x3002;&#x8BE5;&#x7B56;&#x7565;&#x662F;&#x524D;&#x4E24;&#x8005;&#x7684;&#x4E00;&#x4E2A;&#x6298;&#x4E2D;&#x65B9;&#x6848;&#x3002;&#x901A;&#x8FC7;&#x8C03;&#x6574;&#x5B9A;&#x65F6;&#x626B;&#x63CF;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x548C;&#x6BCF;&#x6B21;&#x626B;&#x63CF;&#x7684;&#x9650;&#x5B9A;&#x8017;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x540C;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x5F97;CPU&#x548C;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x8FBE;&#x5230;&#x6700;&#x4F18;&#x7684;&#x5E73;&#x8861;&#x6548;&#x679C;&#x3002;<br>(expires&#x5B57;&#x5178;&#x4F1A;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x6570;&#x636E;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;key&#x662F;&#x6307;&#x5411;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x952E;&#x7684;&#x6307;&#x9488;&#xFF0C;value&#x662F;&#x8BE5;&#x952E;&#x7684;&#x6BEB;&#x79D2;&#x7CBE;&#x5EA6;&#x7684;UNIX&#x65F6;&#x95F4;&#x6233;&#x8868;&#x793A;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;&#x952E;&#x7A7A;&#x95F4;&#x662F;&#x6307;&#x8BE5;Redis&#x96C6;&#x7FA4;&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x6240;&#x6709;&#x952E;&#x3002;)   </li>
+</ul>
+<p>Redis&#x4E2D;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x4E86;&#x60F0;&#x6027;&#x8FC7;&#x671F;&#x548C;&#x5B9A;&#x671F;&#x8FC7;&#x671F;&#x4E24;&#x79CD;&#x8FC7;&#x671F;&#x7B56;&#x7565;&#x3002;   </p>
+<p>Redis&#x7684;&#x5185;&#x5B58;&#x6DD8;&#x6C70;&#x7B56;&#x7565;<br>Redis&#x7684;&#x5185;&#x5B58;&#x6DD8;&#x6C70;&#x7B56;&#x7565;&#x662F;&#x6307;&#x5728;Redis&#x7684;&#x7528;&#x4E8E;&#x7F13;&#x5B58;&#x7684;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x65F6;&#xFF0C;&#x600E;&#x4E48;&#x5904;&#x7406;&#x9700;&#x8981;&#x65B0;&#x5199;&#x5165;&#x4E14;&#x9700;&#x8981;&#x7533;&#x8BF7;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x7684;&#x6570;&#x636E;&#x3002;   </p>
+<ul>
+<li>noeviction&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x65B0;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#x4F1A;&#x62A5;&#x9519;&#x3002;   </li>
+<li>allkeys-lru&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x79FB;&#x9664;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;key&#x3002;   </li>
+<li>allkeys-random&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x968F;&#x673A;&#x79FB;&#x9664;&#x67D0;&#x4E2A;key&#x3002;   </li>
+<li>volatile-lru&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x79FB;&#x9664;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;key&#x3002;   </li>
+<li>volatile-random&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x968F;&#x673A;&#x79FB;&#x9664;&#x67D0;&#x4E2A;key&#x3002;   </li>
+<li>volatile-ttl&#xFF1A;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5BB9;&#x7EB3;&#x65B0;&#x5199;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x6709;&#x66F4;&#x65E9;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key&#x4F18;&#x5148;&#x79FB;&#x9664;&#x3002;   </li>
+</ul>
 
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1074,7 +1199,7 @@ Redis keys&#x8FC7;&#x671F;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x88A
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2 redis","level":"1.2.2","depth":2,"next":{"title":"1.3 mongodb","level":"1.2.3","depth":2,"path":"db/mongodb.md","ref":"db/mongodb.md","articles":[]},"previous":{"title":"1.1 memcached","level":"1.2.1","depth":2,"path":"db/memcached.md","ref":"db/memcached.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"db/redis.md","mtime":"2019-05-07T02:57:11.100Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-22T10:30:50.197Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2 redis","level":"1.2.2","depth":2,"next":{"title":"1.3 mongodb","level":"1.2.3","depth":2,"path":"db/mongodb.md","ref":"db/mongodb.md","articles":[]},"previous":{"title":"1.1 memcached","level":"1.2.1","depth":2,"path":"db/memcached.md","ref":"db/memcached.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","code","custom-favicon","highlight","-sharing","donate","sharing-plus","back-to-top-button","search-pro","advanced-emoji","pageview-count","auto-scroll-table","popup","hide-element","page-toc-button","flexible-alerts","accordion","click-reveal","alerts","emphasize"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"chapter-fold":{},"emphasize":{},"search-pro":{},"accordion":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"donate":{"alipay":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg","alipayText":"支付宝捐赠","button":"捐赠","title":"","wechat":"http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg","wechatText":"微信捐赠"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"click-reveal":{},"highlight":{},"favicon":"./images/favicon.ico","page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"alerts":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"advanced-emoji":{"embedEmojis":false},"sharing":{"qq":false,"all":["weibo","qq","qzone","douban","google"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liaozongchao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"止于唇齿，掩于岁月。","language":"zh-hans","gitbook":"*","description":"从此天涯陌路，天各一方。 从此互不来往，斩断情愫。 删除了记忆，清空了珍藏。 不再徘徊在彷徨的路上。 不再泪水央央度过夜的漫长。 崭新的一天湛蓝， 轻装上阵的舒畅。"},"file":{"path":"db/redis.md","mtime":"2019-05-24T07:24:00.312Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-28T01:54:37.413Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
