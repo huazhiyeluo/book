@@ -22,8 +22,6 @@
             "style": "background: none; max-height: 30px; min-height: 30px"
         },
         "donate": {
-            "wechat": "http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/e16db86b6358fcff19dc610d4840d7e4.jpeg",
-            "alipay": "http://gamehallcdn.yiihua.com/yiihuatools/fanspoker/ae820b296b32550766bdf986e08add78.jpeg",
             "title": "",
             "button": "捐赠",
             "alipayText": "支付宝捐赠",
